@@ -1,2 +1,47 @@
 .App
-  
+
+  .main
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    .goods-list
+      min-width: 240px
+      max-width: 1920px
+      .oops
+        display: flex
+        flex-direction: column
+        gap: 15px
+        align-content: center
+        justify-content: center
+        align-items: center
+        padding: 15px
+        p
+          text-align: center
+          font-size: 16px
+          font-weight: bolder
+        button
+          display: flex
+          cursor: pointer
+          align-content: center
+          align-items: center
+          justify-content: center
+          gap: 10px
+          width: 180px
+          height: 40px
+          cursor: pointer
+          padding: 10px 12px
+          background-color: #6B99C3
+          border: 1px none
+          border-radius: 3px
+          cursor: pointer
+          -webkit-transition: all .1s ease-in-out
+          transition: all .1s ease-in-out
+          svg
+            height: 25px
+            cursor: pointer
+            fill: #000000
+            -webkit-transition: all .1s ease-in-out
+            transition: all .1s ease-in-out
+        button:hover
+          background-color: #457da8

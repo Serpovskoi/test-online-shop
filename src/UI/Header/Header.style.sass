@@ -1,25 +1,65 @@
 header
   background-color: #0C151C
   height: 50px
+  width: 100%
   display: flex
-  flex-direction: row
   flex-direction: row
   align-content: center
   align-items: center
-  justify-content: space-between
-  padding: 0px 15px
-  .logo
-    height: 25px
-  .cart
-    height: 25px
-    cursor: pointer
+  justify-content: center
+
+  .content
+    min-width: 240px
+    width: 100%
+    max-width: 1920px
+    height: 100%
+    width: 100%
     display: flex
     flex-direction: row
-    gap: 10px
     align-content: center
     align-items: center
-    .cart-name
-      color: #ffffff
+    justify-content: space-between
+    padding: 0px 15px
 
-  img
-    height: 25px
+    .logo
+      height: 25px
+
+    .cart
+      height: 25px
+      cursor: pointer
+      display: flex
+      flex-direction: row
+      gap: 10px
+      align-content: center
+      align-items: center
+
+      .cart-name
+        color: #ffffff
+        @media screen and (max-width : 320px)
+          display: none
+
+      .cart-img
+        position: relative
+        .circle-counter
+          position: absolute
+          top: -4px
+          left: -6px
+          width: 15px
+          height: 15px
+          font-size: 12px
+          border-radius: 10px
+          z-index: 99
+          background-color: #fe3939
+
+          p
+            font-size: 11px
+            color: #FFFFFF
+            text-align: center
+            position: absolute
+            left: -0.5px
+            top: 1px
+            width: 100%
+
+    img, svg
+      height: 25px
+      fill: #ffffff

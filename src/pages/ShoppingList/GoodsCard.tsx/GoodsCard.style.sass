@@ -1,0 +1,110 @@
+.goods
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  gap: 8px
+  border: 2px solid #D2D2D4
+  border-radius: 3px
+  padding: 16px
+  background-color: #D2D2D4
+  font-size: 16px
+  width: 200px
+  @media screen and (min-width : 320px)
+    width: 250px
+  @media screen and (min-width : 481px)
+    width: 175px
+  @media screen and (min-width : 769px)
+    width: 150px
+    transition: transform .5s
+
+  &::after
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    transition: opacity 2s cubic-bezier(.165, .84, .44, 1)
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .15)
+    content: ''
+    opacity: 0
+    z-index: -1
+
+  &:hover, &:focus
+    transform: scale3d(1.006, 1.006, 1)
+
+    &::after
+      opacity: 1
+
+  .cover
+    height: 100px
+
+    img
+      width: 100%
+      height: 100%
+
+  .name
+    width: 100%
+
+  .price
+    color: #16354D
+    font-weight: bold
+    font-size: 18px
+
+  .interactive-container
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    align-content: center
+    gap: 8px
+    width: 140px
+    height: 88px
+
+    .add-to-cart
+      height: 40px
+      width: 100%
+      padding: 10px 12px
+      background-color: #6B99C3
+      border: 1px none
+      border-radius: 3px
+      cursor: pointer
+      -webkit-transition: all .1s ease-in-out
+      transition: all .1s ease-in-out
+      display: flex
+      flex-direction: row
+      align-items: center
+      justify-content: center
+      gap: 5px
+
+      p
+        position: relative
+        top: 1px
+
+      svg
+        width: 18px
+
+    .add-to-cart:hover
+      background-color: #457da8
+
+    .delete-from-cart
+      height: 40px
+      width: 100%
+      padding: 10px 12px
+      background-color: #f78888
+      border: 1px none
+      border-radius: 3px
+      cursor: pointer
+      -webkit-transition: all .1s ease-in-out
+      transition: all .1s ease-in-out
+      display: flex
+      flex-direction: row
+      align-items: center
+      justify-content: center
+      gap: 5px
+
+      svg
+        width: 18px
+
+    .delete-from-cart:hover
+      background-color: #c47070
