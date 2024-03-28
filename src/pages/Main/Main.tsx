@@ -42,7 +42,6 @@ export default function Main({
   setCartList,
   setTotalPrice,
 }: Props) {
-
   const [, setSearchParams] = useSearchParams({});
   const [, setUpdate] = useState<number>(Date.now());
   const store = window.localStorage;
@@ -103,6 +102,24 @@ export default function Main({
     return findElemnt;
   }
 
+  function sortByPrice(direct: boolean) {
+    if (direct === false) {
+      goodsList.sort((a, b) => a.price - b.price);
+    } else {
+      goodsList.sort((a, b) => b.price - a.price);
+    }
+        setUpdate(Date.now());
+  }
+
+  function sortByName(direct: boolean) {
+    if (direct === false) {
+      goodsList.sort((a, b) => a.name.localeCompare(b.name));
+    } else {
+      goodsList.sort((a, b) => b.name.localeCompare(a.name))
+    }
+        setUpdate(Date.now());
+  }
+
   useEffect(() => {
     if (dealers.length > 0) handleChangeParams(dealers);
   }, [isCartVisible]);
@@ -130,6 +147,8 @@ export default function Main({
             searchInCart={searchInCart}
             goodsList={goodsList}
             dealers={dealers}
+            sortByPrice={sortByPrice}
+            sortByName={sortByName}
           />
         )}
       </div>
