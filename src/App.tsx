@@ -7,6 +7,7 @@ import "./App.style.sass";
 interface Props {
   dealers: string[];
 }
+
 interface Goods {
   name: string;
   id: string;
@@ -50,8 +51,8 @@ function App({ dealers }: Props) {
   useEffect(() => {
     getGoods();
     checkStorage();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <div className="App">
       <BrowserRouter>

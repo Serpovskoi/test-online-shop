@@ -1,3 +1,5 @@
+@import "../../constants"
+
 .cart
   display: flex
   flex-direction: row
@@ -13,7 +15,7 @@
   align-items: center
   width: 100%
   padding: 15px
-  background-color: #D2D2D4
+  background-color: $background-dark-grey
   @media screen and (min-width : 515px)
     flex-direction: row
 
@@ -30,7 +32,7 @@
       justify-content: center
       gap: 5px
       p
-        color: #16354D
+        color: $font-blue
         font-weight: bold
         font-size: 18px
 
@@ -51,7 +53,7 @@
       height: 40px
       cursor: pointer
       padding: 10px 12px
-      
+
       border: 1px none
       border-radius: 3px
       cursor: pointer
@@ -59,14 +61,14 @@
       transition: all .1s ease-in-out
 
     .registration
-      background-color: #6B99C3
+      background-color: $light-blue
     .registration:hover
-      background-color: #457da8
-    
+      background-color: $focused-light-blue
+
     .delete-all
-      background-color: #f78888
+      background-color: $light-red
     .delete-all:hover
-      background-color: #c47070
+      background-color: $focused-light-red
 
 .cart-list
   display: flex
@@ -75,7 +77,3 @@
   gap: 15px
   padding: 15px
   justify-content: center
-
-      
-
-

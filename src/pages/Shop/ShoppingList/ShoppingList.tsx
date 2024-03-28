@@ -1,6 +1,5 @@
 import React from "react";
-import GoodsCard from "./GoodsCard.tsx/GoodsCard";
-import "./ShoppingList.style.sass";
+import GoodsCard from "../../../UI/GoodsCard.tsx/GoodsCard";
 
 interface Goods {
   name: string;

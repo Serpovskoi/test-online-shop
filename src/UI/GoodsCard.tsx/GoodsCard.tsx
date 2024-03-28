@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Counter from "../../../UI/Counter/Counter";
+import Counter from "../Counter/Counter";
 import "./GoodsCard.style.sass";
-import ArrowToRight from "../../../UI/ArrowToRight/ArrowToRight";
+import ArrowToRight from "../ArrowToRight/ArrowToRight";
 import { Link } from "react-router-dom";
 
 interface Goods {
@@ -21,25 +21,27 @@ interface inCart {
 
 interface Props {
   goods: Goods;
+  mode: "cart" | "shop";
   addToCart?: { (element: Goods, count: number): void };
   deleteFromCart?: { (): void };
   searchInCart: { (element: Goods): inCart | undefined };
   changeCount: { (element: inCart, count: number): void };
-  mode: "cart" | "shop";
-  changeIsCartVisible?: any;
 }
 
 export default function GoodsCard({
   goods,
+  mode,
   addToCart,
   searchInCart,
   changeCount,
   deleteFromCart,
-  mode,
-  changeIsCartVisible,
 }: Props) {
   const elInCart: inCart | undefined = searchInCart(goods);
   const [counter, setCounter] = useState<number>(elInCart ? elInCart.count : 1);
+
+  function changeCounter(newCount: number) {
+    setCounter(newCount === 0 ? 1 : newCount);
+  }
 
   return (
     <div key={goods.id} className="goods">
@@ -58,11 +60,11 @@ export default function GoodsCard({
               value={counter}
               setValue={(e: number) => {
                 changeCount(elInCart, e);
-                setCounter(e);
+                changeCounter(e);
               }}
             />
             <Link to="/cart">
-              <button onClick={changeIsCartVisible} className="add-to-cart">
+              <button className="add-to-cart">
                 <ArrowToRight />
                 <p>Корзина</p>
               </button>
@@ -86,7 +88,7 @@ export default function GoodsCard({
             value={counter}
             setValue={(e: number) => {
               changeCount(elInCart, e);
-              setCounter(e);
+              changeCounter(e);
             }}
           />
           <button

@@ -1,6 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
 html {
   height: 100%
 }
+
 body {
   margin: 0;
   font-family: Helvetica, Arial, sans-serif;
@@ -17,12 +24,6 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  border: none;
 }
 
 a {

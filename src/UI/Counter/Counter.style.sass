@@ -1,27 +1,33 @@
+@import "../../constants"
+
 .counter
   display: flex
+
   button
     width: 40px
     height: 40px
     padding: 10px
     cursor: pointer
     border-radius: 3px 0px 0px 3px
-  
+
     img
       width: 100%
+
     svg
       width: 100%
       cursor: pointer
-      stroke:#000000
+      stroke: #000000
       fill: #000000
       -webkit-transition: all .1s ease-in-out
       transition: all .1s ease-in-out
+
   button:hover svg
-      stroke:#6B99C3
-      fill: #6B99C3
+    stroke: $focused-light-blue
+    fill: $focused-light-blue
+
   button:last-child
     border-radius: 0px 3px 3px 0px
-       
+
   input
     font-size: 16px
     width: 60px
@@ -30,8 +36,7 @@
     text-align: center
     padding: 0px 8px
     box-sizing: border-box
-  input:focus 
+    
+  input:focus
     outline: none
     box-shadow: none
-
-    

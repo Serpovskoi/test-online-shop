@@ -7,10 +7,9 @@ export async function getAllGoods() {
   return answer.data;
 }
 
-export async function getGoodsById(data:string[]) {
-  console.log('byId')
+export async function getGoodsById(data: string[]) {
   const answer = await axios.get(
-    "https://test-frontend.dev.int.perx.ru/api/goods/?dealers=" + data.join(',')
+    "https://test-frontend.dev.int.perx.ru/api/goods/?dealers=" + data.join(",")
   );
   return answer.data;
 }

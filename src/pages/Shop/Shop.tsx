@@ -1,5 +1,8 @@
-import React from "react";
-import ShoppingList from "./ShoppingList";
+import React, { useEffect } from "react";
+import ShoppingList from "./ShoppingList/ShoppingList";
+import "./Shop.style.sass";
+import { useSearchParams } from "react-router-dom";
+
 interface Goods {
   name: string;
   id: string;
@@ -17,17 +20,31 @@ interface inCart {
 
 interface Props {
   goodsList: Goods[];
+  dealers: string[];
   addToCart: { (element: Goods, count: number): void };
-  searchInCart: { (element: Goods): inCart | undefined };
   changeCount: { (element: inCart, count: number): void };
+  searchInCart: { (element: Goods): inCart | undefined };
 }
 
 export default function Shop({
   goodsList,
+  dealers,
   changeCount,
-  searchInCart,
   addToCart,
+  searchInCart,
 }: Props) {
+  const [, setSearchParams] = useSearchParams({});
+
+  const handleChangeParams = (e: string[]) => {
+    setSearchParams({ dealers: e.join(",") });
+  };
+
+  useEffect(() => {
+    if (dealers.length > 0) handleChangeParams(dealers);
+  }, [dealers]);
+
+  useEffect(()=>{document.title = "Online Shop"}, [])
+
   return (
     <>
       {goodsList.length > 0 ? (

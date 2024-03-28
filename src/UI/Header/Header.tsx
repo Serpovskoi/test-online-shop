@@ -4,6 +4,7 @@ import cart from "../../assets/icons/cart.svg";
 import "./Header.style.sass";
 import ArrowToRight from "../ArrowToRight/ArrowToRight";
 import { Link } from "react-router-dom";
+
 interface Props {
   isCartVisible: boolean;
   cartCount: number;
@@ -13,9 +14,11 @@ export default function Header({ isCartVisible, cartCount }: Props) {
   return (
     <header>
       <div className="content">
-        <div className="logo">
-          <img src={logo} alt="logo"></img>
-        </div>
+        <Link to="/">
+          <div className="logo">
+            <img src={logo} alt="logo"></img>
+          </div>
+        </Link>
         <div className="cart">
           {isCartVisible ? (
             <Link to="/">

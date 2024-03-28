@@ -23,7 +23,8 @@ export default function Counter({ value, setValue }: Props) {
         onChange={(e) => setValue(Number(e.target.value))}
         inputMode="numeric"
         type="text"
-        value={value}
+        min="1"
+        value={value > 0 ? value : 1}
       ></input>
       <button onClick={() => setValue(value + 1)}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45.402 45.402">

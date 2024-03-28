@@ -1,5 +1,5 @@
 import React from "react";
-import GoodsCard from "../../ShoppingList/GoodsCard.tsx/GoodsCard";
+import GoodsCard from "../../../UI/GoodsCard.tsx/GoodsCard";
 
 interface Goods {
   name: string;
@@ -30,22 +30,20 @@ export default function CartList({
   setUpdate,
 }: Props) {
   return (
-    <>
-      <div className="cart-list">
-        {cartList.map((e) => (
-          <GoodsCard
-            mode="cart"
-            key={e.id}
-            goods={e}
-            deleteFromCart={() => {
-              changeCount(e, 0);
-              setUpdate(Date.now());
-            }}
-            searchInCart={searchInCart}
-            changeCount={changeCount}
-          />
-        ))}
-      </div>
-    </>
+    <div className="cart-list">
+      {cartList.map((e) => (
+        <GoodsCard
+          mode="cart"
+          key={e.id}
+          goods={e}
+          deleteFromCart={() => {
+            changeCount(e, 0);
+            setUpdate(Date.now());
+          }}
+          searchInCart={searchInCart}
+          changeCount={changeCount}
+        />
+      ))}
+    </div>
   );
 }
