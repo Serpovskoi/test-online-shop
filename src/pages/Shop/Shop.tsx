@@ -53,6 +53,7 @@ export default function Shop({
           changeCount={changeCount}
           searchInCart={searchInCart}
           goodsList={goodsList}
+          isFilter={dealers.length>0?true:false}
         />
       ) : (
         <div className="oops">

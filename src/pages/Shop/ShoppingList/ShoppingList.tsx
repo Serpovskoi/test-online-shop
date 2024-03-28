@@ -21,6 +21,7 @@ interface Props {
   addToCart: { (element: Goods, count: number): void };
   searchInCart: { (element: Goods): inCart | undefined };
   changeCount: { (element: inCart, count: number): void };
+  isFilter?: boolean;
 }
 
 export default function ShoppingList({
@@ -28,19 +29,23 @@ export default function ShoppingList({
   changeCount,
   searchInCart,
   addToCart,
+  isFilter
 }: Props) {
   return (
-    <div className="shopping-list">
-      {goodsList.map((e) => (
-        <GoodsCard
-          mode="shop"
-          key={e.id}
-          goods={e}
-          addToCart={addToCart}
-          searchInCart={searchInCart}
-          changeCount={changeCount}
-        />
-      ))}
-    </div>
+    <>
+      <div className="info"><p>Всего наименований: {goodsList.length}</p>{isFilter?<p>Применён фильтр дилеров</p>:<></>}</div>
+      <div className="shopping-list">
+        {goodsList.map((e) => (
+          <GoodsCard
+            mode="shop"
+            key={e.id}
+            goods={e}
+            addToCart={addToCart}
+            searchInCart={searchInCart}
+            changeCount={changeCount}
+          />
+        ))}
+      </div>
+    </>
   );
 }
