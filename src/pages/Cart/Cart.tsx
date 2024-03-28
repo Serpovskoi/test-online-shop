@@ -64,7 +64,7 @@ export default function Cart({
       <div className="total">
         <div className="total-info">
           <div className="total-text">
-            Итого :<p>{totalPrice}$</p>
+            Итого :<p>{totalPrice.toFixed(2)}$</p>
           </div>
           <div className="total-text">
             Всего :<p>{cartCount}</p>{" "}
