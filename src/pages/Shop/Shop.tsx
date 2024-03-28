@@ -73,7 +73,7 @@ export default function Shop({
                 {isSortedPrice ? (
                   <svg
                     style={
-                      priceSortFlag ? {} : { transform: "rotate(0.5turn)" }
+                      priceSortFlag ? {transform: "rotate(0.5turn)"} : {  }
                     }
                     xmlns="http://www.w3.org/2000/svg"
                     width="8"
@@ -98,7 +98,7 @@ export default function Shop({
                 по наименованию
                 {isSortedName ? (
                   <svg
-                    style={nameSortFlag ? {} : { transform: "rotate(0.5turn)" }}
+                    style={nameSortFlag ? {transform: "rotate(0.5turn)"} : {  }}
                     xmlns="http://www.w3.org/2000/svg"
                     width="8"
                     height="8"
