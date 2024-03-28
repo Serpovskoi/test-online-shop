@@ -1,13 +1,21 @@
+html {
+  height: 100%
+}
 body {
   margin: 0;
   font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #E4E5EA;
+  background-color: #e4e5ea;
+  height: 100%
+}
+
+#root {
+  height: 100%
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -17,3 +25,6 @@ code {
   border: none;
 }
 
+a {
+  text-decoration: none;
+}

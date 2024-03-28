@@ -67,6 +67,22 @@ function App({ dealers }: Props) {
                 isLoading={isLoading}
                 setTotalPrice={setTotalPrice}
                 totalPrice={totalPrice}
+                isCartVisible={false}
+              />
+            }
+          />
+          <Route
+            path="/cart"
+            element={
+              <Main
+                cartList={cartList}
+                setCartList={setCartList}
+                dealers={dealers}
+                goodsList={goodsList}
+                isLoading={isLoading}
+                setTotalPrice={setTotalPrice}
+                totalPrice={totalPrice}
+                isCartVisible={true}
               />
             }
           />

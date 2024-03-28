@@ -23,43 +23,47 @@ header
 
     .logo
       height: 25px
+      display: flex
 
     .cart
       height: 25px
       cursor: pointer
-      display: flex
-      flex-direction: row
-      gap: 10px
-      align-content: center
-      align-items: center
 
-      .cart-name
-        color: #ffffff
-        @media screen and (max-width : 320px)
-          display: none
+      a
+        display: flex
+        flex-direction: row
+        gap: 10px
+        align-content: center
+        align-items: center
+        text-decoration: none
 
-      .cart-img
-        position: relative
-        .circle-counter
-          position: absolute
-          top: -4px
-          left: -6px
-          width: 15px
-          height: 15px
-          font-size: 12px
-          border-radius: 10px
-          z-index: 99
-          background-color: #fe3939
+        .cart-name
+          color: #ffffff
+          @media screen and (max-width : 320px)
+            display: none
 
-          p
-            font-size: 11px
-            color: #FFFFFF
-            text-align: center
+        .cart-img
+          position: relative
+          .circle-counter
             position: absolute
-            left: -0.5px
-            top: 1px
-            width: 100%
+            top: -4px
+            left: -6px
+            width: 15px
+            height: 15px
+            font-size: 12px
+            border-radius: 10px
+            z-index: 99
+            background-color: #fe3939
 
-    img, svg
-      height: 25px
-      fill: #ffffff
+            p
+              font-size: 10.5px
+              color: #FFFFFF
+              text-align: center
+              position: absolute
+              left: -0.5px
+              top: 1.5px
+              width: 100%
+
+      img, svg
+        height: 25px
+        fill: #ffffff

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import ShoppingList from "../ShoppingList/ShoppingList";
 import Header from "../../UI/Header/Header";
-import { useSearchParams } from "react-router-dom";
-import Cart from "../Cart/Cart";
+import { Link, useSearchParams } from "react-router-dom";
+import CartList from "../Cart/CartList/CartList";
 import ArrowToRight from "../../UI/ArrowToRight/ArrowToRight";
+import Cart from "../Cart/Cart";
+import Shop from "../ShoppingList/Shop";
 
 interface Goods {
   name: string;
@@ -28,6 +30,7 @@ interface Props {
   setCartList: { (cartList: inCart[]): void };
   totalPrice: number;
   setTotalPrice: { (totalPrice: number): void };
+  isCartVisible: boolean;
 }
 
 export default function Main({
@@ -35,13 +38,14 @@ export default function Main({
   isLoading,
   dealers,
   cartList,
+  isCartVisible,
   setCartList,
   setTotalPrice,
   totalPrice,
 }: Props) {
   const [, setSearchParams] = useSearchParams({});
-  const [isCartVisible, setIsCartVisible] = useState<boolean>(false);
   const [, setUpdate] = useState<number>(Date.now());
+  const store = window.localStorage;
 
   const handleChangeParams = (e: string[]) => {
     setSearchParams({ dealers: e.join(",") });
@@ -50,9 +54,7 @@ export default function Main({
   useEffect(() => {
     if (dealers.length > 0) handleChangeParams(dealers);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const store = window.localStorage;
+  }, [isCartVisible]);
 
   function searchInCart(element: Goods) {
     const findElemnt = cartList.find((e) => e.id === element.id);
@@ -95,6 +97,11 @@ export default function Main({
     );
     setTotalPrice(+total.toFixed(2));
   }
+  function deleteAllFromCart() {
+    setCartList([]);
+    store.setItem("cartList", JSON.stringify([]));
+    setTotalPrice(0);
+  }
 
   function findTotalCartCount() {
     let total = 0;
@@ -104,56 +111,33 @@ export default function Main({
 
   return (
     <div className="main">
-      <Header
-        isCartVisible={isCartVisible}
-        changeIsCartVisible={() => setIsCartVisible(!isCartVisible)}
-        cartCount={findTotalCartCount()}
-      />
-      {isCartVisible ? (
-        <div className="goods-list">
-          {isLoading ? (
-            <div className="loading">Загрузка...</div>
-          ) : cartList.length > 0 ? (
-            <Cart
-              totalPrice={totalPrice}
-              changeCount={changeCount}
-              searchInCart={searchInCart}
-              cartList={cartList}
-              setCartList={setCartList}
-              setUpdate={setUpdate}
-            />
-          ) : (
-            <div className="oops">
-              <p>В корзине нет товаров.</p>
-              Закажите товары из каталога
-              <button onClick={() => setIsCartVisible(!isCartVisible)}>
-                <p>В каталог</p>
-                <ArrowToRight />
-              </button>
-            </div>
-          )}
-        </div>
-      ) : (
-        <div className="goods-list">
-          {isLoading ? (
-            <div className="loading">Загрузка...</div>
-          ) : goodsList.length > 0 ? (
-            <ShoppingList
-              addToCart={addToCart}
-              changeCount={changeCount}
-              searchInCart={searchInCart}
-              goodsList={goodsList}
-              cartList={cartList}
-              setCartList={setCartList}
-              changeIsCartVisible={() => setIsCartVisible(!isCartVisible)}
-            />
-          ) : (
-            <div className="oops">
-              Упс! Что-то пошло не так. В списке нет товаров.
-            </div>
-          )}
-        </div>
-      )}
+      <Header isCartVisible={isCartVisible} cartCount={findTotalCartCount()} />
+      <div className="goods-list">
+        {isLoading ? (
+          <div className="loading">Загрузка...</div>
+        ) : isCartVisible ? (
+          <Cart
+            totalPrice={totalPrice}
+            changeCount={changeCount}
+            searchInCart={searchInCart}
+            cartList={cartList}
+            setCartList={setCartList}
+            setUpdate={setUpdate}
+            cartCount={findTotalCartCount()}
+            deleteAllFromCart={deleteAllFromCart}
+          />
+        ) : (
+          <Shop
+            addToCart={addToCart}
+            changeCount={changeCount}
+            searchInCart={searchInCart}
+            goodsList={goodsList}
+          />
+        )}
+      </div>
+      <footer>
+        <div className="content"><p>© Online Shop 2024</p><p>Правовая информация</p></div>
+      </footer>
     </div>
   );
 }

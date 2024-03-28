@@ -3,46 +3,79 @@
   flex-direction: row
   flex-wrap: wrap
   gap: 15px
-  padding: 15px
   justify-content: center
 
 .total
   display: flex
   flex-direction: column
   gap: 15px
-  padding: 15px
   justify-content: center
   align-items: center
-  .total-text
-    display: flex
+  width: 100%
+  padding: 15px
+  background-color: #D2D2D4
+  @media screen and (min-width : 515px)
     flex-direction: row
-    align-content: center
-    align-items: center
-    justify-content: center
-    gap: 5px
-    p
-      color: #16354D
-      font-weight: bold
-      font-size: 18px
 
-  button
+  .total-info
     display: flex
-    cursor: pointer
-    align-content: center
-    align-items: center
-    justify-content: center
-    gap: 10px
-    width: 100%
-    max-width: 200px
-    height: 40px
-    cursor: pointer
-    padding: 10px 12px
-    background-color: #6B99C3
-    border: 1px none
-    border-radius: 3px
-    cursor: pointer
-    -webkit-transition: all .1s ease-in-out
-    transition: all .1s ease-in-out
+    flex-direction: column
+    gap: 5px
 
-  button:hover
-    background-color: #457da8
+    .total-text
+      display: flex
+      flex-direction: row
+      align-content: center
+      align-items: flex-end
+      justify-content: center
+      gap: 5px
+      p
+        color: #16354D
+        font-weight: bold
+        font-size: 18px
+
+  .buttons
+    display: flex
+    flex-direction: column
+    gap: 5px
+
+    button
+      display: flex
+      cursor: pointer
+      align-content: center
+      align-items: center
+      justify-content: center
+      gap: 10px
+      width: 100%
+      max-width: 200px
+      height: 40px
+      cursor: pointer
+      padding: 10px 12px
+      
+      border: 1px none
+      border-radius: 3px
+      cursor: pointer
+      -webkit-transition: all .1s ease-in-out
+      transition: all .1s ease-in-out
+
+    .registration
+      background-color: #6B99C3
+    .registration:hover
+      background-color: #457da8
+    
+    .delete-all
+      background-color: #f78888
+    .delete-all:hover
+      background-color: #c47070
+
+.cart-list
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  gap: 15px
+  padding: 15px
+  justify-content: center
+
+      
+
+

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Counter from "../../../UI/Counter/Counter";
 import "./GoodsCard.style.sass";
 import ArrowToRight from "../../../UI/ArrowToRight/ArrowToRight";
+import { Link } from "react-router-dom";
 
 interface Goods {
   name: string;
@@ -60,10 +61,12 @@ export default function GoodsCard({
                 setCounter(e);
               }}
             />
-            <button onClick={changeIsCartVisible} className="add-to-cart">
-              <ArrowToRight />
-              <p>Корзина</p>
-            </button>
+            <Link to="/cart">
+              <button onClick={changeIsCartVisible} className="add-to-cart">
+                <ArrowToRight />
+                <p>Корзина</p>
+              </button>
+            </Link>
           </div>
         ) : (
           <div className="interactive-container">

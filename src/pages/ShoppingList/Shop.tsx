@@ -1,7 +1,5 @@
 import React from "react";
-import GoodsCard from "./GoodsCard.tsx/GoodsCard";
-import "./ShoppingList.style.sass";
-
+import ShoppingList from "./ShoppingList";
 interface Goods {
   name: string;
   id: string;
@@ -24,24 +22,26 @@ interface Props {
   changeCount: { (element: inCart, count: number): void };
 }
 
-export default function ShoppingList({
+export default function Shop({
   goodsList,
   changeCount,
   searchInCart,
   addToCart,
 }: Props) {
   return (
-    <div className="shopping-list">
-      {goodsList.map((e) => (
-        <GoodsCard
-          mode="shop"
-          key={e.id}
-          goods={e}
+    <>
+      {goodsList.length > 0 ? (
+        <ShoppingList
           addToCart={addToCart}
-          searchInCart={searchInCart}
           changeCount={changeCount}
+          searchInCart={searchInCart}
+          goodsList={goodsList}
         />
-      ))}
-    </div>
+      ) : (
+        <div className="oops">
+          Упс! Что-то пошло не так. В списке нет товаров.
+        </div>
+      )}
+    </>
   );
 }
